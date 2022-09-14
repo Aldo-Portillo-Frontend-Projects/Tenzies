@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Die from './Die';
+import { nanoid } from 'nanoid'
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
     let newDiceArr = [];
 
     for (let i = 0; i < 10; i++){
-      newDiceArr.push({value: randomDie(), isHeld: false,})
+      newDiceArr.push({value: randomDie(), isHeld: false, id: nanoid()})
     }
 
     return newDiceArr
@@ -28,8 +29,14 @@ function App() {
     return <Die value={die.value} isHeld={die.isHeld}/>
   })
 
+  console.log(dice)
+
   function rollDice() {
     setDice(allNewDice)
+  }
+
+  function holdDice(){
+    
   }
 
   return (
