@@ -1,0 +1,14 @@
+.dice-container{
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.dice-border {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
