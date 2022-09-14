@@ -4,14 +4,6 @@ import Die from './Die';
 
 function App() {
 
-/**
- * Challenge: Add conditional styling to the Die component
- * so that if it's held (isHeld === true), its background color
- * changes to a light green (#59E391)
- * 
- * Remember: currently the Die component has no way of knowing
- * if it's "held" or not.
- */
 
   const [dice, setDice] = React.useState(allNewDice())
 
@@ -19,9 +11,7 @@ function App() {
     return Math.floor(Math.random() * 6 + 1);
   }
 
-  const diceRender = dice.map(die => {
-    return <Die value={die.value} />
-  })
+
 
   function allNewDice() {
     let newDiceArr = [];
@@ -33,13 +23,20 @@ function App() {
     return newDiceArr
   }
 
+  const diceRender = dice.map(die => {
+    console.log(die.isHeld)
+    return <Die value={die.value} isHeld={die.isHeld}/>
+  })
+
   function rollDice() {
     setDice(allNewDice)
   }
 
   return (
     <div className="game-board">
-      {diceRender}
+      <div className='dice-container'>
+        {diceRender}
+      </div>
       <button onClick={rollDice}>Roll Dice</button>
     </div>
   );
