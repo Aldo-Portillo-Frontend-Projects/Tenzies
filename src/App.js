@@ -4,14 +4,13 @@ import Die from './Die';
 
 function App() {
 
-
 /**
- * Challenge: Create a `Roll Dice` button that will re-roll
- * all 10 dice
+ * Challenge: Add conditional styling to the Die component
+ * so that if it's held (isHeld === true), its background color
+ * changes to a light green (#59E391)
  * 
- * Clicking the button should generate a new array of numbers
- * and set the `dice` state to that new array (thus re-rendering
- * the array to the page)
+ * Remember: currently the Die component has no way of knowing
+ * if it's "held" or not.
  */
 
   const [dice, setDice] = React.useState(allNewDice())
@@ -21,14 +20,14 @@ function App() {
   }
 
   const diceRender = dice.map(die => {
-    return <Die value={die} />
+    return <Die value={die.value} />
   })
 
   function allNewDice() {
     let newDiceArr = [];
 
     for (let i = 0; i < 10; i++){
-      newDiceArr.push(randomDie())
+      newDiceArr.push({value: randomDie(), isHeld: false,})
     }
 
     return newDiceArr
