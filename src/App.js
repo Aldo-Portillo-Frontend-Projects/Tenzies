@@ -5,10 +5,13 @@ import Die from './Die';
 function App() {
 
 
-  /**
- Map over the state numbers array to generate our array
- * of Die elements and render those in place of our
- * manually-written 10 Die elements.
+/**
+ * Challenge: Create a `Roll Dice` button that will re-roll
+ * all 10 dice
+ * 
+ * Clicking the button should generate a new array of numbers
+ * and set the `dice` state to that new array (thus re-rendering
+ * the array to the page)
  */
 
   const [dice, setDice] = React.useState(allNewDice())
@@ -31,12 +34,14 @@ function App() {
     return newDiceArr
   }
 
-  console.log(dice)
+  function rollDice() {
+    setDice(allNewDice)
+  }
 
   return (
     <div className="game-board">
       {diceRender}
-      <button>Roll Dice</button>
+      <button onClick={rollDice}>Roll Dice</button>
     </div>
   );
 }
