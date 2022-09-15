@@ -4,13 +4,36 @@ import Die from './Die';
 import { nanoid } from 'nanoid'
 
 
+
 function App() {
 
   const [dice, setDice] = React.useState(allNewDice())
 
+  function allNewDice() {
+    let newDiceArr = [];
+
+    for (let i = 0; i < 10; i++){
+      newDiceArr.push({
+        value: randomDie(), 
+        isHeld: false, 
+        id: nanoid()
+      })
+    }
+
+    return newDiceArr
+  }
+
   function randomDie() {
     return Math.floor(Math.random() * 6 + 1);
   }
+
+  function rollDice() {
+
+    setDice(oldDice => oldDice.map(die => {
+      return die.isHeld ? die : {...die, value: randomDie(), id: nanoid()}
+    }))
+  }
+
 
   function holdDice(id) {
     //Use set dice to get our previous array and map through it
@@ -23,18 +46,7 @@ function App() {
     }))
 }
 
-  function allNewDice() {
-    let newDiceArr = [];
-
-    for (let i = 0; i < 10; i++){
-      newDiceArr.push({value: randomDie(), 
-        isHeld: false, 
-        id: nanoid()
-      })
-    }
-
-    return newDiceArr
-  }
+  
 
   const diceRender = dice.map(die => {
     //console.log(die.isHeld)
@@ -43,9 +55,7 @@ function App() {
 
   //console.log(dice)
 
-  function rollDice() {
-    setDice(allNewDice)
-  }
+
 
 
 
@@ -58,5 +68,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
