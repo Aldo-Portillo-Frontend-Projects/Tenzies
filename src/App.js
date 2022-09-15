@@ -3,6 +3,7 @@ import './App.css';
 import Die from './Die';
 import { nanoid } from 'nanoid'
 
+
 function App() {
 
   const [dice, setDice] = React.useState(allNewDice())
@@ -11,11 +12,17 @@ function App() {
     return Math.floor(Math.random() * 6 + 1);
   }
 
-  function holdDice(id){
-    console.log(id)
-  }
+  function holdDice(id) {
+    //Use set dice to get our previous array and map through it
+    setDice(oldDice => oldDice.map(die => {
+        //return a new object that changes the isHeld property of the object in new array
+        return die.id === id ? 
+            {...die, isHeld: !die.isHeld} :
+            //If not, return regular array
+            die
+    }))
+}
 
-  holdDice(2)
   function allNewDice() {
     let newDiceArr = [];
 
