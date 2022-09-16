@@ -13,7 +13,14 @@ function App() {
   const [tenzies, setTenzies] = React.useState(false)
 
   React.useEffect(()=> {
-    console.log("Dice state changed")
+    const allDiceHeld = dice.every(die => die.isHeld === true)
+    const sameNumber = dice.every(die => die.value === dice[0].value)
+
+    if (sameNumber && allDiceHeld) {
+      setTenzies(true)
+    }
+    
+
   }, [dice])
 
   function allNewDice() {
