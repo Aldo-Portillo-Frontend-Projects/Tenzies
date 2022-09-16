@@ -9,11 +9,6 @@ import Confetti from 'react-confetti'
 
 function App() {
 
-  /**
- * Challenge: Allow the user to play a new game when the
- * button is clicked and they've already won
- */
-
   const [dice, setDice] = React.useState(allNewDice())
 
   const [tenzies, setTenzies] = React.useState(false)
@@ -87,6 +82,8 @@ function newGame (){
   return (
     <div className="game-board">
       {tenzies && <Confetti />}
+      <h1 className="title">Tenzies</h1>
+            <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className='dice-container'>
         {diceRender}
       </div>
