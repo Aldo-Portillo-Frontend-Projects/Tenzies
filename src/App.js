@@ -9,6 +9,10 @@ import Confetti from 'react-confetti'
 
 function App() {
 
+  /**
+ * Challenge: Allow the user to play a new game when the
+ * button is clicked and they've already won
+ */
 
   const [dice, setDice] = React.useState(allNewDice())
 
@@ -62,6 +66,11 @@ function App() {
     }))
 }
 
+function newGame (){
+  setTenzies(false)
+  setDice(allNewDice)
+}
+
   
 
   const diceRender = dice.map(die => {
@@ -81,7 +90,7 @@ function App() {
       <div className='dice-container'>
         {diceRender}
       </div>
-      <button onClick={rollDice}>{tenzies ? "New Game" : "Roll Dice"}</button>
+      <button onClick={tenzies ? newGame : rollDice}>{tenzies ? "New Game" : "Roll Dice"}</button>
     </div>
   );
 }
