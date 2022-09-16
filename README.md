@@ -7,6 +7,5 @@
 - Add a timer that stops when completed
 - Save the time in local storage
 - Add die faces to the numbers (If I ever become a css god)
-- Add a counter that counts number of rolls
 
 [Active Page](https://aldoportillo.github.io/Tenzies/)
