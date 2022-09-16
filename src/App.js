@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Die from './Die';
 import { nanoid } from 'nanoid'
+//Import confetti package  
+import Confetti from 'react-confetti'
 
 
 
@@ -75,10 +77,11 @@ function App() {
 
   return (
     <div className="game-board">
+      {tenzies && <Confetti />}
       <div className='dice-container'>
         {diceRender}
       </div>
-      <button onClick={rollDice}>Roll Dice</button>
+      <button onClick={rollDice}>{tenzies ? "New Game" : "Roll Dice"}</button>
     </div>
   );
 }
