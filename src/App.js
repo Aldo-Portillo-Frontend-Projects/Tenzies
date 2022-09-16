@@ -7,7 +7,14 @@ import { nanoid } from 'nanoid'
 
 function App() {
 
+
   const [dice, setDice] = React.useState(allNewDice())
+
+  const [tenzies, setTenzies] = React.useState(false)
+
+  React.useEffect(()=> {
+    console.log("Dice state changed")
+  }, [dice])
 
   function allNewDice() {
     let newDiceArr = [];
